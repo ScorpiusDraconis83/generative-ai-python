@@ -3,7 +3,7 @@
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# You may obtain a copy of the License at:
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
 #
@@ -16,7 +16,6 @@
 import io
 import os
 import pathlib
-
 
 import setuptools  # type: ignore
 
@@ -43,12 +42,14 @@ else:
     release_status = "Development Status :: 5 - Production/Stable"
 
 dependencies = [
-    "google-ai-generativelanguage==0.4.0",
-    "google-auth",
+    "google-ai-generativelanguage==0.6.15",
     "google-api-core",
-    "typing-extensions",
+    "google-api-python-client",
+    "google-auth>=2.15.0",  # 2.15 adds API key auth support
     "protobuf",
+    "pydantic",
     "tqdm",
+    "typing-extensions",
 ]
 
 extras_require = {
@@ -84,8 +85,10 @@ setuptools.setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",  # Colab
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Operating System :: OS Independent",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
+        "Typing :: Typed",
     ],
     platforms="Posix; MacOS X; Windows",
     packages=packages,
@@ -95,4 +98,5 @@ setuptools.setup(
     extras_require=extras_require,
     include_package_data=True,
     zip_safe=False,
+    package_data={"generativeai": ["py.typed"]},
 )
